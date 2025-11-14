@@ -9,7 +9,7 @@ import {
 import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
 import { Calendar, UsersRound } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+// import { Link } from "@tanstack/react-router";
 
 const ProjectOverViewItem = ({ project }: { project: Project }) => {
   return (

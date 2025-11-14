@@ -1,22 +1,20 @@
 import MyTasks from "@/components/my-tasks";
-import ProjectOverViewItem from "@/components/project-overview-item";
 import ProjectsOverview from "@/components/projects-overview";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ItemGroup } from "@/components/ui/item";
+
 import { ProjectsContext } from "@/providers/projectsProvider";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
+
 import { useContext } from "react";
-// import logo from '../logo.svg'
 
 export const Route = createFileRoute("/")({
   component: App,
