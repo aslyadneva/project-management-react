@@ -47,24 +47,15 @@ function App() {
             </Button>
           </div>
 
-          <div className="dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div className="dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card className="@container/card">
               <CardHeader>
                 <CardDescription>Total Projects</CardDescription>
                 <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
                   {projects.length}
                 </CardTitle>
-                <CardAction>
-                  {/* <Badge variant="outline">
-              <IconTrendingUp />
-              +12.5%
-            </Badge> */}
-                </CardAction>
               </CardHeader>
               <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                {/* <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <IconTrendingUp className="size-4" />
-          </div> */}
                 <div className="text-muted-foreground">
                   Projects in Cloud Ops Hub
                 </div>
@@ -76,12 +67,6 @@ function App() {
                 <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
                   0
                 </CardTitle>
-                <CardAction>
-                  {/* <Badge variant="outline">
-              <IconTrendingUp />
-              +12.5%
-            </Badge> */}
-                </CardAction>
               </CardHeader>
               <CardFooter className="flex-col items-start gap-1.5 text-sm">
                 {/* <div className="line-clamp-1 flex gap-2 font-medium">
@@ -98,17 +83,8 @@ function App() {
                 <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
                   1
                 </CardTitle>
-                <CardAction>
-                  {/* <Badge variant="outline">
-              <IconTrendingUp />
-              +12.5%
-            </Badge> */}
-                </CardAction>
               </CardHeader>
               <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                {/* <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <IconTrendingUp className="size-4" />
-          </div> */}
                 <div className="text-muted-foreground">Assigned to me</div>
               </CardFooter>
             </Card>
@@ -118,27 +94,14 @@ function App() {
                 <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
                   0
                 </CardTitle>
-                <CardAction>
-                  {/* <Badge variant="outline">
-              <IconTrendingUp />
-              +12.5%
-            </Badge> */}
-                </CardAction>
               </CardHeader>
               <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                {/* <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <IconTrendingUp className="size-4" />
-          </div> */}
                 <div className="text-muted-foreground">need attention</div>
               </CardFooter>
             </Card>
           </div>
-          {/* <div className="@container/main flex flex-1 flex-col gap-2">
-        Index route
-      </div> */}
 
           <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-            {/* Project Overview */}
             <ProjectsOverview projects={projects} />
             <MyTasks />
           </div>

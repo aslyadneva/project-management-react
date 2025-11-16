@@ -7,12 +7,9 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarGroupLabel,
-  SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { FolderOpen, LayoutDashboard } from "lucide-react";
-// import { use } from "react";
 
 const items = [
   {
@@ -28,8 +25,7 @@ const items = [
 ];
 
 const AppSidebar = () => {
-  //   const pathname = usePathname();
-  //   const { projects } = use(ProjectsContext);
+  const { pathname } = useLocation();
 
   return (
     <Sidebar>
@@ -53,10 +49,7 @@ const AppSidebar = () => {
           <SidebarMenu>
             {items.map((item) => (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton
-                  asChild
-                  // isActive={pathname === item.url}
-                >
+                <SidebarMenuButton asChild isActive={pathname === item.url}>
                   <Link to={item.url}>
                     <item.icon />
                     <span>{item.title}</span>
@@ -65,24 +58,6 @@ const AppSidebar = () => {
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {/* {projects
-                ? projects.map((project) => (
-                    <SidebarMenuItem key={project.title}>
-                      <SidebarMenuButton asChild>
-                        <a href="">
-                          <span>{project.title}</span>
-                        </a>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))
-                : null}{" "} */}
-            </SidebarMenu>
-          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
