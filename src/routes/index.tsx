@@ -3,7 +3,6 @@ import ProjectsOverview from "@/components/projects-overview";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardDescription,
   CardFooter,
   CardHeader,
