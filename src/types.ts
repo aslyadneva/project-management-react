@@ -1,16 +1,28 @@
-type Project = {
+export enum TasksTableStatus {
+  TODO = "todo",
+  IN_PROGRESS = "in-progress",
+  COMPLETED = "completed",
+}
+
+export enum ProjectsTableStatus {
+  PLANNING = "Planning",
+  ACTIVE = "Active",
+  COMPLETED = "Completed",
+}
+
+export type Project = {
   id: string;
   title: string;
   description: string;
-  status: "Active" | "Planning";
-  progress: number;
+  tasks: Task[];
+  status: ProjectsTableStatus;
   date: string;
-  members: Member[];
 };
 
-type Task = {
+export type Task = {
+  id: string;
   title: string;
   description: string;
+  project: Pick<Project, "id" | "title">;
+  status: TasksTableStatus;
 };
-
-type Member = {};

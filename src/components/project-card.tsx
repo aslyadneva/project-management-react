@@ -1,15 +1,31 @@
 import { Link } from "@tanstack/react-router";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemFooter,
+  // ItemFooter,
   ItemTitle,
 } from "@/components/ui/item";
+import { Progress } from "./ui/progress";
+import type { Project, Task } from "@/types";
+import ProjectBadge from "./project-badge";
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+  project,
+  tasks,
+}: {
+  project: Project;
+  tasks: Task[];
+}) => {
+  const completedTasks = tasks.filter(
+    (task) => task.status === "completed"
+  ).length;
+
+  const progress = tasks.length
+    ? Math.trunc((completedTasks / tasks.length) * 100)
+    : 0;
+
   return (
     <Item asChild variant="outline">
       <Link
@@ -21,17 +37,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <ItemContent>
           <ItemTitle>{project.title}</ItemTitle>
           <ItemDescription>{project.description}</ItemDescription>
-          <Badge>{project.status}</Badge>
+          <ProjectBadge status={project.status} />
         </ItemContent>
 
         <ItemFooter className="flex-col">
           <div className="flex self-stretch justify-between">
             <div className="text-muted-foreground text-xs">Progress</div>
-            <div className="text-muted-foreground text-xs">
-              {project.progress}%
-            </div>
+            <div className="text-muted-foreground text-xs">{progress}%</div>
           </div>
-          <Progress value={project.progress} className="w-full" />
+          <Progress value={progress} className="w-full" />
         </ItemFooter>
       </Link>
     </Item>

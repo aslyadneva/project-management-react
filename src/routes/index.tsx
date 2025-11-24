@@ -1,4 +1,5 @@
 import MyTasks from "@/components/my-tasks";
+import ProjectForm from "@/components/create-project-form";
 import ProjectsOverview from "@/components/projects-overview";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,23 +9,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-import { ProjectsContext } from "@/providers/projectsProvider";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useCreateProject, useProjects } from "@/hooks/projects";
+import { useTasks } from "@/hooks/tasks";
 import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
-
-import { useContext } from "react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
   component: App,
 });
 
 function App() {
-  const { projects } = useContext(ProjectsContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: projects } = useProjects();
+  const { data: tasks } = useTasks();
+  const { mutate } = useCreateProject();
 
   return (
     <div className="p-8 flex flex-1 flex-col gap-4">
-      {projects && (
+      {projects && tasks && (
         <>
           <div className="flex justify-between items-center">
             <div>
@@ -38,9 +42,7 @@ function App() {
             <Button
               variant="outline"
               size="sm"
-              // onClick={() =>
-              //   setIsCreateProjectModalOpen(!isCreateProjectModalOpen)
-              // }
+              onClick={() => setIsModalOpen(!isModalOpen)}
             >
               <Plus /> New Project
             </Button>
@@ -102,10 +104,22 @@ function App() {
 
           <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
             <ProjectsOverview projects={projects} />
-            <MyTasks />
+            <MyTasks tasks={tasks} />
           </div>
         </>
       )}
+      <Dialog open={isModalOpen}>
+        <DialogContent
+          className="sm:max-w-md"
+          showCloseButton={false}
+          onPointerDownOutside={() => setIsModalOpen(false)}
+        >
+          <ProjectForm
+            handleSubmit={(data) => mutate(data)}
+            closeModal={() => setIsModalOpen(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

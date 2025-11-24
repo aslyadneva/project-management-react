@@ -8,6 +8,8 @@ import {
 import { Button } from "./ui/button";
 import { ItemGroup } from "./ui/item";
 import ProjectOverViewItem from "./project-overview-item";
+import { Link } from "@tanstack/react-router";
+import type { Project } from "@/types";
 
 const ProjectsOverview = ({ projects }: { projects: Project[] }) => {
   return (
@@ -15,14 +17,18 @@ const ProjectsOverview = ({ projects }: { projects: Project[] }) => {
       <CardHeader className="border-b items-center">
         <CardTitle className="row-span-full">Project Overview</CardTitle>
         <CardAction>
-          <Button variant="link">View All</Button>
+          <Link to={"/projects"}>
+            <Button variant="link">View All</Button>
+          </Link>
         </CardAction>
       </CardHeader>
       <CardContent>
         <ItemGroup>
-          {projects.map((project) => (
+          {/* {projects.map((project) => (
             <ProjectOverViewItem key={project.title} project={project} />
-          ))}
+          ))} */}
+          <ProjectOverViewItem project={projects[0]} />
+          <ProjectOverViewItem project={projects[1]} />
         </ItemGroup>
       </CardContent>
     </Card>
