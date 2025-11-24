@@ -41,9 +41,3 @@ To run the project in your local environment, follow these steps:
 2. Run `npm install` in the project directory to install the required dependencies.
 3. Run `npm run dev` to get the project started.
 4. Open [http://localhost:3000](http://localhost:3000) (or the address shown in your console) in your web browser to view the app.
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
