@@ -28,8 +28,6 @@ export async function getProjects() {
       queries: [Query.select(["*", "tasks.*"]), Query.orderDesc("$createdAt")],
     });
 
-    console.log("projects response", response);
-
     const normalized: Project[] = response.rows.map((row) => ({
       id: row.$id,
       title: row.title,

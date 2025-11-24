@@ -147,7 +147,6 @@ function RouteComponent() {
                 });
                 setIsModalOpen(false);
               }}
-              closeModal={() => {}}
             />
           </DialogContent>
         </Dialog>

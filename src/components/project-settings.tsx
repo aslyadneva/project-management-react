@@ -23,7 +23,6 @@ const ProjectSettings = ({ project }: { project: Project }) => {
     <div className="grid lg:grid-cols-[2fr_1fr] gap-4">
       <EditProjectForm
         handleSubmit={(data) => {
-          console.log("submit edit project", data);
           mutate({ projectId: project.id, data: data });
         }}
         status={status}

@@ -29,10 +29,9 @@ const formSchema = z.object({
 });
 interface Form {
   handleSubmit: (data: z.infer<typeof formSchema>) => void;
-  closeModal: () => void;
 }
 
-const TaskForm = ({ handleSubmit, closeModal }: Form) => {
+const TaskForm = ({ handleSubmit }: Form) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

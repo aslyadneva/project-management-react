@@ -28,8 +28,6 @@ export async function getTasks() {
       ],
     });
 
-    console.log("tasks response", response);
-
     const normalized: Task[] = response.rows.map((row) => ({
       id: row.$id,
       title: row.title,
